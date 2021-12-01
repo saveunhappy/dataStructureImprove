@@ -1,5 +1,9 @@
 package com.mj;
 
+import com.mj.sort.BubbleSort2;
+import com.mj.sort.BubbleSort3;
+import com.mj.sort.HeapSort;
+import com.mj.sort.SelectionSort;
 import com.mj.tools.Asserts;
 import com.mj.tools.Integers;
 import com.mj.tools.Times;
@@ -23,10 +27,20 @@ public class Main {
 //            bubbleSort3(array2);
 //        });
 
-        Integer[] array = Integers.random(10, 1, 100);
-        Integers.println(array);
-        selectionSort(array);
-        Asserts.test(Integers.isAscOrder(array));
+        Integer[] array1 = Integers.random(10000, 1, 20000);
+        Integer[] array2 = Integers.copy(array1);
+        Integer[] array3 = Integers.copy(array1);
+//        selectionSort(array);
+        Times.test("HeapSort",()->{
+            new HeapSort().sort(array2);
+        });
+        Times.test("SelectionSort",()->{
+            new SelectionSort().sort(array1);
+        });
+
+        Times.test("BubbleSort3",()->{
+            new BubbleSort3().sort(array3);
+        });
     }
     static void selectionSort(Integer[] array){
         for (int end = array.length - 1; end > 0; end--) {
