@@ -2,16 +2,29 @@ package com.mj.sort;
 
 import java.text.DecimalFormat;
 
-public abstract class Sort {
+public abstract class Sort implements Comparable<Sort>{
     protected Integer[] array;
     protected int cmpCount;
     protected int swapCount;
     protected long time;
     protected DecimalFormat fmt = new DecimalFormat("#.00");
     public void sort(Integer[] array){
-        if(array == null || array.length < 2)return;
+        if (array == null || array.length < 2) return;
         this.array = array;
+        long begin = System.currentTimeMillis();
         sort();
+        time = System.currentTimeMillis() - begin;
+    }
+
+    @Override
+    public int compareTo(Sort o) {
+            int result = (int)(time - o.time);
+            if (result != 0) return result;
+
+            result = cmpCount - o.cmpCount;
+            if (result != 0) return result;
+
+            return swapCount - o.swapCount;
     }
 
     protected abstract void sort();
