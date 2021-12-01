@@ -1,5 +1,6 @@
 package com.mj;
 
+import com.mj.tools.Asserts;
 import com.mj.tools.Integers;
 import com.mj.tools.Times;
 
@@ -8,20 +9,38 @@ public class Main {
 //        int[] array = {10, 9, 19, 28, 37, 56, 34};
 //        Integer[] array = Integers.random(10000, 1, 100);
         //Integer[] array = Integers.ascOrder(1,10000);
-        Integer[] array = Integers.tailAscOrder(1,10000,4000);
-        Integer[] array1 = Integers.copy(array);
-        Integer[] array2 = Integers.copy(array);
-        Integers.println(array);
-        Times.test("冒泡排序1",()->{
-            bubbleSort1(array);
-        });
-        Times.test("冒泡排序2",()->{
-            bubbleSort2(array1);
-        });
-        Times.test("冒泡排序3",()->{
-            bubbleSort3(array2);
-        });
+//        Integer[] array = Integers.tailAscOrder(1,10000,4000);
+//        Integer[] array1 = Integers.copy(array);
+//        Integer[] array2 = Integers.copy(array);
+//        Integers.println(array);
+//        Times.test("冒泡排序1",()->{
+//            bubbleSort1(array);
+//        });
+//        Times.test("冒泡排序2",()->{
+//            bubbleSort2(array1);
+//        });
+//        Times.test("冒泡排序3",()->{
+//            bubbleSort3(array2);
+//        });
 
+        Integer[] array = Integers.random(10, 1, 100);
+        Integers.println(array);
+        selectionSort(array);
+        Asserts.test(Integers.isAscOrder(array));
+    }
+    static void selectionSort(Integer[] array){
+        for (int end = array.length - 1; end > 0; end--) {
+            int maxIndex = 0;
+            for (int begin = 1; begin <= end; begin++) {
+                if(array[maxIndex] < array[begin]){
+                    maxIndex = begin;
+                }
+            }
+            int temp = array[maxIndex];
+            //每次都放到最后
+            array[maxIndex] = array[end];
+            array[end] = temp;
+        }
     }
     static void bubbleSort1(Integer[] array){
         //第一层循环就是最右边一直往左边走，因为你每一次都能选出最大的，在最右边，每次做减减的操作
