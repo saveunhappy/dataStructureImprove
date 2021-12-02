@@ -1,6 +1,8 @@
-package com.mj.sort;
+package com.mj.sort.cmp;
 
-public class SelectionSort extends Sort{
+import com.mj.sort.Sort;
+
+public class SelectionSort<E extends Comparable<E>> extends Sort<E> {
     @Override
     protected void sort() {
         for (int end = array.length - 1; end > 0; end--) {

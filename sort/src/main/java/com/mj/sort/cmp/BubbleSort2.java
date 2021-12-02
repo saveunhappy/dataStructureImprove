@@ -1,18 +1,19 @@
-package com.mj.sort;
+package com.mj.sort.cmp;
 
-public class BubbleSort3 extends Sort{
+import com.mj.sort.Sort;
+
+public class BubbleSort2<E extends Comparable<E>> extends Sort<E> {
     @Override
     protected void sort() {
         for (int end = array.length - 1; end > 0; end--) {
-            //sortIndex的初始值在数组完全有序的时候有用
-            int sortIndex = 0;
+            boolean sorted = true;
             for (int begin = 1; begin <= end; begin++) {
                 if (cmp(begin,begin - 1) < 0) {
                     swap(begin,begin - 1);
-                    sortIndex = begin;
+                    sorted = false;
                 }
             }
-            end = sortIndex;
+            if (sorted) break;
         }
     }
 }

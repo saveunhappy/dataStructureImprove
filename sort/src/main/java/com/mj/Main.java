@@ -1,9 +1,9 @@
 package com.mj;
 
 import com.mj.sort.*;
+import com.mj.sort.cmp.*;
 import com.mj.tools.Asserts;
 import com.mj.tools.Integers;
-import com.mj.tools.Times;
 
 import java.util.Arrays;
 
@@ -34,7 +34,9 @@ public class Main {
 
     static void testSort(Integer[] array, Sort... sorts) {
         for (Sort sort : sorts) {
-            sort.sort(Integers.copy(array));
+            Integer[] newArray = Integers.copy(array);
+            sort.sort(newArray);
+            Asserts.test(Integers.isAscOrder(newArray));
         }
         Arrays.sort(sorts);
         for (Sort sort : sorts) {
