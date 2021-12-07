@@ -9,32 +9,19 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-//        int[] array = {10, 9, 19, 28, 37, 56, 34};
-//        Integer[] array = Integers.random(10000, 1, 100);
-        //Integer[] array = Integers.ascOrder(1,10000);
-//        Integer[] array = Integers.tailAscOrder(1,10000,4000);
-//        Integer[] array1 = Integers.copy(array);
-//        Integer[] array2 = Integers.copy(array);
-//        Integers.println(array);
-//        Times.test("冒泡排序1",()->{
-//            bubbleSort1(array);
-//        });
-//        Times.test("冒泡排序2",()->{
-//            bubbleSort2(array1);
-//        });
-//        Times.test("冒泡排序3",()->{
-//            bubbleSort3(array2);
-//        });
 
-        Integer[] array1 = Integers.random(10000, 1, 20000);
-        Integer[] array2 = Integers.copy(array1);
-        Integer[] array3 = Integers.copy(array1);
-        testSort(array1,
-                new HeapSort(),
-                new SelectionSort(),
-                new BubbleSort3(),
-                new InsertionSort1(),
-                new InsertionSort2());
+//        Integer[] array1 = Integers.random(10000, 1, 20000);
+//        Integer[] array2 = Integers.copy(array1);
+//        Integer[] array3 = Integers.copy(array1);
+//        testSort(array1,
+//                new HeapSort(),
+//                new SelectionSort(),
+//                new BubbleSort3(),
+//                new InsertionSort1(),
+//                new InsertionSort2());
+
+        int[] array = {2,4,6,8,10};
+        Asserts.test(BinarySearch.indexOf(array,4) == 1);
     }
 
     static void testSort(Integer[] array, Sort... sorts) {
